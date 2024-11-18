@@ -27,7 +27,7 @@ const show = async (questionId) => {
     }
 }
 
-const create = async (questionFormData) => {
+const createQuestion = async (questionFormData) => {
     try {
         const res = await fetch(BASE_URL, {
             method: 'POST',
@@ -104,4 +104,4 @@ const deleteComment = async (questionId, commentId) => {
     }
 };
 
-export { index, show, create, createComment, deleteQuestion, update, updateComment, deleteComment };
+export { index, show, createQuestion, createComment, deleteQuestion, updateQuestion, updateComment, deleteComment };

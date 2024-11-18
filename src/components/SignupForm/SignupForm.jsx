@@ -1,14 +1,18 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import * as authService from '../../services/authService'
+import * as authService from '../../services/authService';
+
 
 const SignupForm = (props) => {
   const navigate = useNavigate();
-  const [message, setMessage] = useState(['']);
+  const [message, setMessage] = useState('');
   const [formData, setFormData] = useState({
     username: '',
     password: '',
     passwordConf: '',
+    email: '',
+    gender: 'Female',
+    dateOfBirth: '',
   });
 
   const updateMessage = (msg) => {
@@ -22,64 +26,81 @@ const SignupForm = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const newUserResponse = await authService.signup(formData)
+      const newUserResponse = await authService.signup(formData);
       props.setUser(newUserResponse.user);
-      navigate('/') // upon redirect you will see the "Dashboard" page
+      navigate('/'); 
     } catch (err) {
-      updateMessage(err.message)
+      updateMessage(err.message);
     }
-  };
-
-  const { username, password, passwordConf } = formData;
-
-  const isFormInvalid = () => {
-    return !(username && password && password === passwordConf);
   };
 
   return (
     <main>
-      <h1>Sign Up</h1>
-      <p>{message}</p>
       <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            id="name"
-            value={username}
-            name="username"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            name="password"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="confirm">Confirm Password:</label>
-          <input
-            type="password"
-            id="confirm"
-            value={passwordConf}
-            name="passwordConf"
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <button disabled={isFormInvalid()}>Sign Up</button>
-          <Link to="/">
-            <button>Cancel</button>
-          </Link>
-        </div>
+        <label htmlFor="username-input">Username</label>
+        <input
+          type="text"
+          required
+          name="username"
+          id="username-input"
+          value={formData.username}
+          onChange={handleChange}
+        />
+        <label htmlFor="email-input">Email</label>
+        <input
+          type="email"
+          required
+          name="email"
+          id="email-input"
+          value={formData.email}
+          onChange={handleChange}
+        />
+        <label htmlFor="password-input">Password</label>
+        <input
+          type="password"
+          required
+          name="password"
+          id="password-input"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        <label htmlFor="passwordConf-input">Confirm Password</label>
+        <input
+          type="password"
+          required
+          name="passwordConf"
+          id="passwordConf-input"
+          value={formData.passwordConf}
+          onChange={handleChange}
+        />
+        <label htmlFor="gender-input">Gender</label>
+        <select
+          required
+          name="gender"
+          id="gender-input"
+          value={formData.gender}
+          onChange={handleChange}
+        >
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select>
+        <label htmlFor="dateOfBirth-input">Date of Birth</label>
+        <input
+          type="date"
+          required
+          name="dateOfBirth"
+          id="dateOfBirth-input"
+          value={formData.dateOfBirth}
+          onChange={handleChange}
+        />
+        <button type="submit">SIGN UP</button>
       </form>
+      {message && <p>{message}</p>}
+      <p>
+        Already have an account? <Link to="/login">Log in</Link>
+      </p>
     </main>
   );
 };
 
-export default SignupForm;
+export default S
