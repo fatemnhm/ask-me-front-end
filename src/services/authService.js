@@ -1,4 +1,3 @@
-
 const BACKEND_URL = import.meta.env.VITE_EXPRESS_BACKEND_URL;
 
 const getUser = () => {
@@ -7,7 +6,6 @@ const getUser = () => {
   const user = JSON.parse(atob(token.split('.')[1]));
   return user;
 };
-
 const signup = async (formData) => {
   try {
     const res = await fetch(`${BACKEND_URL}/users/signup`, {
@@ -48,9 +46,6 @@ const signin = async (user) => {
   }
 };
 
-const signout = () => {
-  localStorage.removeItem('token');
-};
 
-export { signup, signin, getUser, signout };
+export { signup, signin, getUser};
 
