@@ -8,7 +8,7 @@ import SigninForm from './components/SigninForm/SigninForm'
 import * as authService from '../src/services/authService' // import the authservice
 import * as questionService from '../src/services/questionService'
 import QuestionList from './components/QuestionList/QuestionList'
-import QuestionDetails from './components/QuestionDetails/QuestionDetails'
+import QuestionDetails from './components/QuestionDetails/QquestionDetails'
 import QuestionForm from './components/QuestionForm/QuestionForm'
 import CommentForm from './components/CommentForm/CommentForm';
 
@@ -53,6 +53,8 @@ const App = () => {
     )))
     navigate(`/questions/${questionId}`)
   }
+
+
 
   return (
     <>
