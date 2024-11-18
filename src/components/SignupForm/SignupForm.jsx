@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as authService from '../../services/authService';
 
+
 const SignupForm = (props) => {
   const navigate = useNavigate();
   const [message, setMessage] = useState('');
@@ -10,7 +11,7 @@ const SignupForm = (props) => {
     password: '',
     passwordConf: '',
     email: '',
-    gender: 'Male',
+    gender: 'Female',
     dateOfBirth: '',
   });
 
@@ -27,7 +28,7 @@ const SignupForm = (props) => {
     try {
       const newUserResponse = await authService.signup(formData);
       props.setUser(newUserResponse.user);
-      navigate('/'); // upon redirect you will see the "Dashboard" page
+      navigate('/'); 
     } catch (err) {
       updateMessage(err.message);
     }
@@ -102,4 +103,4 @@ const SignupForm = (props) => {
   );
 };
 
-export default SignupForm;
+export default S
