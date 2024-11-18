@@ -47,5 +47,5 @@ const signin = async (user) => {
 };
 
 
-export { signup, signin, getUser, signout };
+export { signup, signin, getUser};
 
