@@ -61,6 +61,7 @@ const App = () => {
         <Routes>
           {user ? (
             <>
+             <Route user={user} handleSignout={handleSignout} />
               <Route path="/" element={<Dashboard user={user} />} />
               <Route path="/questions" element={<QuestionList questions={questions} />} />
               <Route path="/questions/:questionId" element={<QuestionDetails handleDeleteQuestion={handleDeleteQuestion} />} />

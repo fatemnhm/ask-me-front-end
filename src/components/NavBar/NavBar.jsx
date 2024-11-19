@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-const NavBar = ({ user }) => {
+const NavBar = ({ user}) => {
   return (
     <>
       { user ? (
