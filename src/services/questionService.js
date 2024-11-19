@@ -27,7 +27,7 @@ const show = async (questionId) => {
     }
 }
 
-const create = async (questionFormData) => {
+const createQuestion = async (questionFormData) => {
     try {
         const res = await fetch(BASE_URL, {
             method: 'POST',
@@ -72,7 +72,7 @@ const deleteQuestion = async (questionId) => {
         console.log(error)
     }
 }
-const update = async (questionId, questionFormData) => {
+const updateQuestion = async (questionId, questionFormData) => {
     try {
         const res = await fetch(`${BASE_URL}/${questionId}`, {
             method: 'PUT',
@@ -119,4 +119,4 @@ const deleteComment = async (questionId, commentId) => {
     }
 };
 
-export { index, show, create, createComment, deleteQuestion, update, updateComment, deleteComment };
+export { index, show, createQuestion, createComment, deleteQuestion, updateQuestion, updateComment, deleteComment }
