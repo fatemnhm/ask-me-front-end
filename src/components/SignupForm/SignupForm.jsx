@@ -103,4 +103,4 @@ const SignupForm = (props) => {
   );
 };
 
-export default S
+export default SignupForm;
