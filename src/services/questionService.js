@@ -72,6 +72,21 @@ const deleteQuestion = async (questionId) => {
         console.log(error)
     }
 }
+const update = async (questionId, questionFormData) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${questionId}`, {
+            method: 'PUT',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(questionFormData)
+        });
+        return res.json();
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 const updateComment = async (questionId, commentId, commentFormData) => {
     try {
