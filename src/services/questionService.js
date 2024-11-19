@@ -119,4 +119,4 @@ const deleteComment = async (questionId, commentId) => {
     }
 };
 
-export { index, show, createQuestion, createComment, deleteQuestion, updateQuestion, updateComment, deleteComment }
+export { index, show, create, createComment, deleteQuestion, update, updateComment, deleteComment };
