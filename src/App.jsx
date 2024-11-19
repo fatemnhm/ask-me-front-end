@@ -35,7 +35,7 @@ const App = () => {
   }
 
   const handleAddQuestion = async (questionFormData) => {
-    const newQuestion = await questionService.create(questionFormData)
+    const newQuestion = await questionService.createQuestion(questionFormData)
     setQuestions([newQuestion, ...questions])
     navigate('/questions')
   }
@@ -47,7 +47,7 @@ const App = () => {
   }
 
   const handleUpdateQuestion = async (questionId, questionFormData) => {
-    const updatedQuestion = await questionService.update(questionId, questionFormData)
+    const updatedQuestion = await questionService.updateQuestion(questionId, questionFormData)
     setQuestions(questions.map(question => (
       questionId === question._id ? updatedQuestion : question
     )))

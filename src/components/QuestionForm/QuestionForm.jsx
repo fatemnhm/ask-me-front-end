@@ -27,17 +27,17 @@ const QuestionForm = (props) => {
     }
   }, [questionId]);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    props.onSubmit(formData);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (questionId) {
+      props.handleUpdateQuestion(questionId, formData);
+    } else {
+      props. handleAddQuestion(formData);
+    }
   };
 
   return (
