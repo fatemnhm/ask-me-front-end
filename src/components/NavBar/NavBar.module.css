@@ -30,6 +30,7 @@
   .container li {
     margin-left: 35px;
     text-align: right;
+    color: #352CAB;
   }
   
   @media only screen and (max-width: 414px) {
