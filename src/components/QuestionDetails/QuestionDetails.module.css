@@ -46,7 +46,7 @@
     margin: 0;
     opacity: 1;
     font-weight: 600;
-    color: var(--primary);
+    color: #352CAB;
     margin: 7px 0px 14px 0px;
   }
   
@@ -123,10 +123,9 @@
     color: white;
     font-weight: 600;
     background: #00a0df;
-    width: 40px;
+    width: 100px;
     height: 40px;
     margin: 0 0 0 14px;
-    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;

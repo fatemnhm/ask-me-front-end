@@ -72,7 +72,7 @@ const QuestionDetails = props => {
               <AuthorInfo content={comment} />
                 {comment.author._id === user._id && (
                   <>
-                    <Link to={`/hoots/${questionId}/comments/${comment._id}/edit`}>
+                    <Link to={`/questions/${questionId}/comments/${comment._id}/edit`}>
                       <Icon category="Edit" />
                     </Link>
                     <button onClick={() => handleDeleteComment(comment._id)}>
