@@ -3,7 +3,10 @@ import { useEffect, useState, useContext } from 'react'
 import * as questionService from '../../services/questionService'
 import Loading from '../Loading/Loading'
 import CommentForm from '../CommentForm/CommentForm'
+import AuthorInfo from '../../components/AuthorInfo/AuthorInfo';
 import { AuthedUserContext } from '../../App'
+import styles from './QuestionDetails.module.css';
+import Icon from '../Icon/Icon';
 
 const QuestionDetails = props => {
   const { questionId } = useParams()
@@ -24,10 +27,18 @@ const QuestionDetails = props => {
     setQuestion({ ...question, comments: [...question.comments, newComment] })
   }
 
+  const handleDeleteComment = async (commentId) => {
+    await questionService.deleteComment(questionId, commentId);
+    setQuestion({
+      ...question,
+      comments: question.comments.filter((comment) => comment._id !== commentId),
+    });
+  };
   if (!question) return <Loading />
 
   return (
-    <main>
+    <main className={styles.container}>
+      <section>
       <header>
         <p>{question.category.toUpperCase()}</p>
         <h1>{question.title}</h1>
@@ -37,14 +48,19 @@ const QuestionDetails = props => {
         </p>
         {question.author._id === user._id && (
           <>
-            <Link to={`/questions/${questionId}/edit`}>EDIT</Link>
+          <div>
+            <Link to={`/questions/${questionId}/edit`}>
+            <Icon category="Edit" />
+            </Link>
             <button onClick={() => props.handleDeleteQuestion(questionId)}>
-              DELETE
+            <Icon category="Trash" />
             </button>
+          </div>
           </>
         )}
       </header>
       <p>{question.text}</p>
+      </section>
       <section>
         <h2>Comments</h2>
         <CommentForm handleAddComment={handleAddComment} />
@@ -52,10 +68,19 @@ const QuestionDetails = props => {
         {question.comments.map(comment => (
           <article key={comment._id}>
             <header>
-              <p>
-                {comment.author.username} posted on{' '}
-                {new Date(comment.createdAt).toLocaleDateString()}
-              </p>
+              <div>
+              <AuthorInfo content={comment} />
+                {comment.author._id === user._id && (
+                  <>
+                    <Link to={`/hoots/${questionId}/comments/${comment._id}/edit`}>
+                      <Icon category="Edit" />
+                    </Link>
+                    <button onClick={() => handleDeleteComment(comment._id)}>
+                      <Icon category="Trash" />
+                    </button>
+                  </>
+                )}
+              </div>
             </header>
             <p>{comment.text}</p>
           </article>

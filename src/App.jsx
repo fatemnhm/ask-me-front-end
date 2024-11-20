@@ -25,6 +25,7 @@ const App = () => {
     const fetchAllQuestions = async () => {
       const questionsData = await questionService.index()
       setQuestions(questionsData)
+      //console.log(questions)
     }
     if (user) fetchAllQuestions()
   }, [user])

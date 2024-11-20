@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { AuthedUserContext } from '../../App';
 import { useContext } from 'react';
 import styles from './NavBar.module.css'
-import Logo from '../../assets/images/logo.png'
+import Logo from '../../assets/images/logo.svg'
 
 const NavBar = ({ handleSignout }) => {
   const user = useContext(AuthedUserContext);
@@ -10,7 +10,7 @@ const NavBar = ({ handleSignout }) => {
     <>
       { user ? (
         <nav className={styles.container}>
-          <Link to='/'><img src={Logo} /></Link>
+          <Link to='/'><img className='logo' src={Logo} /></Link>
           <ul>
           <li>Welcome, {user.username}</li>
             <li><Link to="/">Home</Link></li>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import * as questionService from '../../services/questionService';
-
+import styles from './QuestionForm.module.css';
 const QuestionForm = (props) => {
   const [formData, setFormData] = useState({
     title: '',
@@ -41,7 +41,7 @@ const QuestionForm = (props) => {
   };
 
   return (
-    <main>
+    <main className={styles.container}>
       <form onSubmit={handleSubmit}>
         <label htmlFor="title-input">Title</label>
         <input
