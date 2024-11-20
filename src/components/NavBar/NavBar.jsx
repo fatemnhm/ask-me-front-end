@@ -20,7 +20,8 @@ const NavBar = ({ handleSignout }) => {
           </ul>
         </nav>
       ) : (
-        <nav>
+        <nav className={styles.container}>
+          <Link to='/'><img className='logo' src={Logo} /></Link>
           <ul>
             <li><Link to="/signin">Sign In</Link></li>
             <li><Link to="/signup">Sign Up</Link></li>
