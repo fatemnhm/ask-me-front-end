@@ -1,5 +1,3 @@
-// src/components/Dashboard.jsx
-
 const Dashboard = ({ user }) => {
   return (
     <main>
