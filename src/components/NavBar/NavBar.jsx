@@ -13,18 +13,18 @@ const NavBar = ({ handleSignout }) => {
           <Link to='/'><img className='logo' src={Logo} /></Link>
           <ul>
           <li>Welcome, {user.username}</li>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/questions">Questions</Link></li>
-            <li><Link to="/questions/new">New Question</Link></li>
-            <li><Link to="" onClick={handleSignout}>Sign Out</Link></li>
+            <Link to="/"><li>Home</li></Link>
+            <Link to="/questions"><li>Questions</li></Link>
+            <Link to="/questions/new"><li>New Question</li></Link>
+            <Link to="" onClick={handleSignout}><li>Sign Out</li></Link>
           </ul>
         </nav>
       ) : (
         <nav className={styles.container}>
           <Link to='/'><img className='logo' src={Logo} /></Link>
           <ul>
-            <li><Link to="/signin">Sign In</Link></li>
-            <li><Link to="/signup">Sign Up</Link></li>
+            <Link to="/signin"><li>Sign In</li></Link>
+            <Link to="/signup"><li>Sign Up</li></Link>
           </ul>
         </nav>
       )}
