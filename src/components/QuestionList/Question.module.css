@@ -53,6 +53,7 @@
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     margin: 0;
+    color: #352CAB;
   }
   
   .container article p {

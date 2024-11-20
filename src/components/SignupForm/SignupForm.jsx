@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as authService from '../../services/authService';
 import styles from './SignupForm.module.css';
+import SignupIcon from '../../assets/images/signup.svg';
 
 const SignupForm = (props) => {
   const navigate = useNavigate();
@@ -36,7 +37,13 @@ const SignupForm = (props) => {
 
   return (
     <main className={styles.container}>
+      <section>
+        <img src={SignupIcon} alt="Ask" />
+      </section>
+      <section>
       <form onSubmit={handleSubmit}>
+      <p>{message}</p>
+      <h1>Sign Up</h1>
         <label htmlFor="username-input">Username</label>
         <input
           type="text"
@@ -95,10 +102,8 @@ const SignupForm = (props) => {
         />
         <button type="submit">SIGN UP</button>
       </form>
-      {message && <p>{message}</p>}
-      <p>
-        Already have an account? <Link to="/login">Log in</Link>
-      </p>
+   </section>
+      
     </main>
   );
 };
