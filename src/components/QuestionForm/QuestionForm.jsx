@@ -34,6 +34,10 @@ const QuestionForm = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (questionId) {
+      console.log('id', questionId);
+      console.log('formData', formData);
+      
+      
       props.handleUpdateQuestion(questionId, formData);
     } else {
       props. handleAddQuestion(formData);

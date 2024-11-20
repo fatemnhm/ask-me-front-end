@@ -59,6 +59,38 @@ const createComment = async (questionId, commentFormData) => {
     }
 }
 
+const createCommentReply = async (questionId, commentId, replyFormData) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${questionId}/comments/${commentId}/reply`, {
+            method: 'POST',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(replyFormData)
+        })
+        return res.json()
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const updateCommentReply = async (questionId, commentId, replyId, replyFormData) => {
+    try {
+      const res = await fetch(`${BASE_URL}/${questionId}/comments/${commentId}/reply/${replyId}`, {
+        method: 'PUT',
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(replyFormData),
+      });
+      return res.json();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 const deleteQuestion = async (questionId) => {
     try {
         const res = await fetch(`${BASE_URL}/${questionId}`, {
@@ -119,5 +151,20 @@ const deleteComment = async (questionId, commentId) => {
     }
 };
 
+const deleteCommentReply = async (questionId, commentId, replyId) => {
+    try {
+        const res = await fetch(`${BASE_URL}/${questionId}/comments/${commentId}/reply/${replyId}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`,
+                'Content-Type': 'application/json',
+            }
+        });
+        return res.json();
+    } catch (error) {
+        console.log(error);
+    }
+};
 
-export { index, show, createQuestion, createComment, deleteQuestion, updateQuestion, updateComment, deleteComment };
+
+export { index, show, createQuestion, createComment, deleteQuestion, updateQuestion, updateComment, deleteComment, createCommentReply, updateCommentReply, deleteCommentReply };

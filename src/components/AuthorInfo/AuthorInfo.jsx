@@ -3,6 +3,8 @@ import ProfileIcon from '../../assets/images/profile.png';
 import Icon from '../Icon/Icon';
 
 const AuthorInfo = ({ content }) => {
+  // console.log(content);
+  
   return (
     <div className={styles.container}>
       <img src={ProfileIcon} alt="The user's avatar" />

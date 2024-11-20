@@ -2,8 +2,8 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import * as questionService from '../../services/questionService'
 
-const CommentForm = props => {
-  const { questionId, commentId } = useParams()
+const ReplyForm = props => {
+  const { questionId, commentId, replyId } = useParams()
   const navigate = useNavigate()
   const [formData, setFormData] = useState({
     text: '',
@@ -13,9 +13,10 @@ const CommentForm = props => {
     const fetchQuestion = async () => {
       const questionData = await questionService.show(questionId)
       
-      const comment = questionData.comments.find(comment => comment._id === commentId)
-      if (comment) {
-        setFormData({ text: comment.text })
+      const reply = questionData.comments.find(comment => comment._id === commentId)
+                          .replies.find(reply => reply._id === replyId)
+      if (reply) {
+        setFormData({ text: reply.text })
       }
     }
     
@@ -28,18 +29,17 @@ const CommentForm = props => {
 
   const handleSubmit = async event => {
     event.preventDefault()
-    if (questionId && commentId) {
-      await questionService.updateComment(questionId, commentId, formData)
+    if (questionId && commentId && replyId) {
+      await questionService.updateCommentReply(questionId, commentId, replyId, formData)
       navigate(`/questions/${questionId}`)
     } else {
-      props.handleAddComment(formData)
+      props.handleReplyComment(formData)
     }
     setFormData({ text: '' })
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="text-input">Your comment:</label>
       <textarea
         value={formData.text}
         name="text"
@@ -47,9 +47,9 @@ const CommentForm = props => {
         required
         onChange={handleChange}
       ></textarea>
-      <button type="submit">SUBMIT COMMENT</button>
+      <button type="submit">SUBMIT REPLY</button>
     </form>
   )
 }
 
-export default CommentForm
+export default ReplyForm

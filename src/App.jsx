@@ -11,6 +11,7 @@ import QuestionList from './components/QuestionList/QuestionList'
 import QuestionDetails from './components/QuestionDetails/QuestionDetails'
 import QuestionForm from './components/QuestionForm/QuestionForm'
 import CommentForm from './components/CommentForm/CommentForm';
+import ReplyForm from './components/ReplyForm/ReplyForm'
 
 
 export const AuthedUserContext = createContext(null)
@@ -68,7 +69,8 @@ const App = () => {
               <Route path="/questions/:questionId" element={<QuestionDetails handleDeleteQuestion={handleDeleteQuestion} />} />
               <Route path="/questions/new" element={<QuestionForm handleAddQuestion={handleAddQuestion} />} />
               <Route path="/questions/:questionId/edit" element={<QuestionForm handleUpdateQuestion={handleUpdateQuestion} />} />
-              <Route path="/questions/:questionsId/comments/new" element={<CommentForm />} />
+              <Route path="/questions/:questionId/comments/:commentId/edit" element={<CommentForm  handleAddComment={handleUpdateQuestion}/>} />
+              <Route path="/questions/:questionId/comments/:commentId/reply/:replyId/edit" element={<ReplyForm  />} />
               
               
             </>

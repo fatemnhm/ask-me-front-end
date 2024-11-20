@@ -135,3 +135,14 @@
     width: 25px;
     height: 25px;
   }
+
+  .reply {
+    color: #00a0df;
+    font-weight: 500;
+    font-size: 14px;
+    margin: 7px 0;
+  }
+
+  .replywrapper {
+    padding-left: 10px;
+  }
