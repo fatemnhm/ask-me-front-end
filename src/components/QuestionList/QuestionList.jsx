@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import styles from './Question.module.css';
-import Icon from '../Icon/Icon';
 import AuthorInfo from '../../components/AuthorInfo/AuthorInfo';
 import { Cpu, Heart, BookOpen, Globe, Users, Smile, Baby, Gamepad, Book, Dumbbell, Star, Briefcase } from 'lucide-react';
 
