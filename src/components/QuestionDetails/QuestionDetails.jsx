@@ -12,7 +12,7 @@ import { comment } from 'postcss'
 
 const QuestionDetails = props => {
   const { questionId } = useParams()
-  const { user } = useContext(AuthedUserContext);
+  const user = useContext(AuthedUserContext)
 
   const [question, setQuestion] = useState(null)
   const [currentComment, setCurrentComment] = useState(null)
@@ -86,7 +86,7 @@ const QuestionDetails = props => {
           {question.author.username} posted on{' '}
           {new Date(question.createdAt).toLocaleDateString()}
         </p>
-        {question.author._id === user?._id && (
+        {question.author._id === user._id && (
           <>
           <div>
             <Link to={`/questions/${questionId}/edit`}>
@@ -110,7 +110,7 @@ const QuestionDetails = props => {
             <header>
               <div>
               <AuthorInfo content={comment} />
-                {comment.author._id === user?._id && (
+                {comment.author._id === user._id && (
                   <>
                     <Link to={`/questions/${questionId}/comments/${comment._id}/edit`}>
                       <Icon category="Edit" />
